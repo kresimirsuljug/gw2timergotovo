@@ -1,0 +1,51 @@
+﻿<Page
+    x:Class="GW2Timer.TimerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GW2Timer"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:GW2Timer.Models"
+   
+    mc:Ignorable="d">
+    <Page.Resources>
+        <Style TargetType="TextBlock" x:Key="imebossa">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="TextWrapping" Value="WrapWholeWords"/>
+            <Setter Property="Margin" Value="5,10,5,0"/>
+            <Setter Property="Height" Value="40" />
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Grid.Column" Value="0" />
+        </Style>
+    
+    </Page.Resources>
+    <Grid>
+       
+        <ListView  ItemsSource="{x:Bind CheckedBossItems}" DisplayMemberPath=""  HorizontalAlignment="Stretch">
+            <ListView.ItemTemplate  >
+                <DataTemplate x:DataType="data:BossItem"  >    
+                        <StackPanel Orientation="Horizontal">
+                            <Grid Width="320">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                          
+                            <TextBlock Text="{x:Bind Category}"  Style="{StaticResource imebossa}" />
+                            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                            <TextBlock Text="{x:Bind TimeH}"  Width="30" FontSize="18" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Column="1"/>
+                                <TextBlock Name="dvotocka" Text=":" Width="30"  FontSize="18" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" />
+                                <TextBlock Text="{x:Bind TimeM}" Width="30" Name="MinTextBlock" FontSize="18" HorizontalAlignment="Right" Margin="0,0,10,0"  VerticalAlignment="Center" Grid.Column="1" />
+                            </StackPanel>
+                        </Grid>
+                        </StackPanel>
+                    
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+
+        </ListView>
+    </Grid>
+</Page>
